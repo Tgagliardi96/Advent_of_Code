@@ -1,0 +1,17 @@
+# R code
+library(tidyverse)
+
+# Opening Day 1 file
+input <- read_lines("C:/Users/Tommaso/OneDrive/ML_proj/Advent_Code_Day_1.txt")
+
+# Eliminating non numerical
+input <- gsub("[^0-9]", "", input)
+
+# Selecting first digit, last digit
+digit_1 <- str_sub(input, start = 1, end = 1)
+digit_2 <- str_sub(input, start = -1)
+
+# Uniting first digit, last digit to sum
+final_digit <- paste0(digit_1, digit_2) %>%
+  parse_number() %>%
+  sum()
